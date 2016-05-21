@@ -1,4 +1,6 @@
 class PotentialUsersController < ApplicationController
+  include ActionController::HttpAuthentication::Basic::ControllerMethods
+  http_basic_authenticate_with name: "api", password: "supersecret", except: :create
   before_action :set_potential_user, only: [:show, :update, :destroy]
 
   # GET /potential_users
